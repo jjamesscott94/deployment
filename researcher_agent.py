@@ -24,7 +24,7 @@ def get_config():
     tools = [tool]
 
     # Initialize the LLM
-    llm = ChatOpenAI(model="gpt-4", temperature=0)
+    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
     llm_with_tools = llm.bind_tools(tools)
 
     def researcher(state: State) -> Dict:
