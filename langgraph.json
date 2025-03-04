@@ -1,7 +1,7 @@
 {
     "dependencies": ["."],
     "graphs": {
-        "researcher": "researcher_agent.py:graph"
+        "researcher": "researcher_agent:graph"
     },
     "env": "./.env",
     "python_version": "3.11"
