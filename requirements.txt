@@ -1,0 +1,7 @@
+langchain-community
+langchain-core
+langchain-openai
+tavily-python
+typing-extensions
+pydantic
+langgraph

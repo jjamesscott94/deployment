@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  langgraph-api:
+    image: langchain/langgraph-api:3.11
+    ports:
+      - "8000:8000"
+    environment:
+      - LANGSMITH_API_KEY=${LANGSMITH_API_KEY}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - TAVILY_API_KEY=${TAVILY_API_KEY}
+      - LANGSMITH_TRACING=${LANGSMITH_TRACING}
+      - LANGSMITH_ENDPOINT=${LANGSMITH_ENDPOINT}
+      - LANGSMITH_PROJECT=${LANGSMITH_PROJECT}
+    volumes:
+      - .:/app
+    depends_on:
+      - langgraph-redis
+      - langgraph-postgres
+
+  langgraph-redis:
+    image: redis:6.2
+    ports:
+      - "6379:6379"
+
+  langgraph-postgres:
+    image: postgres:16
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - "5432:5432" 
