@@ -84,3 +84,13 @@ config = {
 
 # Export for LangGraph API
 __all__ = ["graph"]
+
+# Add this section to invoke the graph when the script is run directly
+if __name__ == "__main__":
+    # Initialize with the default config
+    result = graph.invoke(config)
+    
+    # Print the conversation
+    for message in result["messages"]:
+        sender = "Human" if isinstance(message, HumanMessage) else "AI"
+        print(f"{sender}: {message.content}\n")
